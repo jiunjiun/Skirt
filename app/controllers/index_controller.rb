@@ -14,8 +14,10 @@ class IndexController < ApplicationController
     else
       @render_url = root_url + Url.where(:url=> @url.url).first.code
     end
-    render :text=> @render_url
-
+    respond_to do |format|
+      # format.xml { render :xml => {:surl => @render_url }}
+      format.json { render :json => {:surl => @render_url }}
+    end
   end
 
   private
