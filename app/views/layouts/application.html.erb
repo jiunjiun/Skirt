@@ -3,12 +3,18 @@
 <head>
   <title>Skirt</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
-
+<div id="wrap">
+    <%= render :partial => "common/nav" %>
+    <div class="container">
+        <%= yield %>
+    </div>
+</div>
+<%= render :partial => "common/footer" %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

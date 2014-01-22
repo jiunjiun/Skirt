@@ -1,4 +1,12 @@
-%h1 Skirt
+.main
+  .main-title
+    Skirt
 
-= form_for @url, :url=> root_path do |f|
-  = f.text_field :url, :type=> 'url'
+  = form_for @url, :url=> root_path, :html=> {:role => 'form', :id=> 'respond'}, :remote=> true do |f|
+    .row
+      .col-md-8.col-md-offset-2
+        .form-group
+          = f.text_field :url, :type=> 'url', :class=> 'form-control col-md-8 surl', :placeholder=> root_url
+          .back-fa.hide
+            %i.fa.fa-undo.fa-3x
+
