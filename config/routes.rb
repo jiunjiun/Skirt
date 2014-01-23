@@ -1,8 +1,8 @@
 Skirt::Application.routes.draw do
   root "index#index"
 
-  post '/',      to: 'index#create'
-  get  '/:code', to: 'index#goto'
+  post '/',      to: 'index#create', as: 'post'
+  get  '/:code', to: 'index#goto', as: 'goto'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
