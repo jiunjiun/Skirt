@@ -20,4 +20,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  name: 'Skirt'
+  description: 'Make your url like miniskirt'

@@ -1,8 +1,8 @@
 .main
   .main-title.text-center
-    Skirt
+    = t(:name)
   .sec-title.text-center
-    %h4 Make your url like miniskirt
+    %h4= t(:description)
   = form_for @url, :url=> post_path, :html=> {:role => 'form', :id=> 'respond'}, :remote=> true do |f|
     .row
       .col-md-8.col-md-offset-2
