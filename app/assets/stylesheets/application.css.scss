@@ -22,8 +22,13 @@ html, body {height: 100%; }
   margin: 0 auto -60px;
   /* Pad bottom by footer height */
   padding: 0 0 60px;
+  display: table;
 
-  padding-top: 200px;
+  .container {
+    display: table-cell;
+    height: 100%;
+    vertical-align:middle;
+  }
 }
 
 #footer {
@@ -39,9 +44,10 @@ html, body {height: 100%; }
 }
 
 .main {
+  margin: auto 0; height: 100%;
   .main-title {
     font-size: 100pt;
-    text-align: center;
+    line-height: 90%;
   }
 
   .form-group {
