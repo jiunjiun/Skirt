@@ -1,15 +1,14 @@
 class Url < ActiveRecord::Base
-
   validates :url, :format => URI::regexp(%w(http https))
   validates_uniqueness_of :url, :code
-  # validates :count, :numericality => true
+  validate :url_filled?, on: :create
 
   before_save :create_url_attributes
 
   def self.verifyCode(code)
     @redirect_url = Url.where(:code=> code)
     if not @redirect_url.nil?
-      @redirect_url = @redirect_url.first
+      @redirect_url = @redirect_url.firstmodel
       @redirect_url.count +=1
       @redirect_url.save
       @redirect_url.url
@@ -20,7 +19,11 @@ class Url < ActiveRecord::Base
 
   private
   def url_filled?
-    !url.blank?
+    domain = ['skirt.dev', 'skirt.herokuapp.com']
+    Rails.logger.debug { "___ #{ !domain.any? {|w| url[w]} }" }
+    if domain.any? {|w| url[w]}
+      errors[:name] << "can not be bar"
+    end
   end
 
   def create_url_attributes

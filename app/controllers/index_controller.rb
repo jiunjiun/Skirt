@@ -9,13 +9,16 @@ class IndexController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    if @url.save
+
+    if Url.where(:url=> @url.url).count > 0
+      @render_url = root_url + Url.where(:url=> @url.url).first.code
+    elsif @url.save
       @render_url = root_url + @url.code
     else
-      @render_url = root_url + Url.where(:url=> @url.url).first.code
+      @render_url = @url.url
     end
+
     respond_to do |format|
-      # format.xml { render :xml => {:surl => @render_url }}
       format.json { render :json => {:surl => @render_url }}
     end
   end
