@@ -8,7 +8,7 @@ class Url < ActiveRecord::Base
   def self.verifyCode(code)
     @redirect_url = Url.where(:code=> code)
     if not @redirect_url.nil?
-      @redirect_url = @redirect_url.firstmodel
+      @redirect_url = @redirect_url.first
       @redirect_url.count +=1
       @redirect_url.save
       @redirect_url.url
