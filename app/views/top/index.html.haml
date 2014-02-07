@@ -1,0 +1,16 @@
+%article
+  %h1= t 'top.title'
+  .panel.panel-default
+    / .panel-heading Panel heading
+    %table.table
+      %tr.active
+        %th= t 'top.url'
+        %th= t 'top.link'
+        %th= t 'top.view'
+      - @tops.each do |top|
+        %tr
+          %td= top.url
+          %td
+            %a{:href => root_url + top.code}= root_url + top.code
+          %td= top.count
+  = will_paginate @tops, :class=> 'pull-right', renderer: BootstrapPagination::Rails
