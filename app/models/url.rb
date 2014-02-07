@@ -7,13 +7,13 @@ class Url < ActiveRecord::Base
 
   def self.verifyCode(code)
     @redirect_url = Url.where(:code=> code)
-    if not @redirect_url.nil?
+    if @redirect_url.count > 0
       @redirect_url = @redirect_url.first
       @redirect_url.count +=1
       @redirect_url.save
       @redirect_url.url
     else
-      root_path
+      Rails.application.routes.url_helpers.root_path
     end
   end
 
