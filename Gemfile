@@ -29,20 +29,25 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-
 # Use mysql as the database for Active Record
 group :development, :test do
   gem "mysql2"
+
+  gem 'meta_request'
 end
 
 group :production do
   gem "pg"
 end
 
-gem 'haml'
 
+
+gem 'haml'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
