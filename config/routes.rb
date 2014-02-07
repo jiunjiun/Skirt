@@ -1,6 +1,8 @@
 Skirt::Application.routes.draw do
   root "index#index"
 
+  get 'top100', to: 'top#index'
+
   post '/',      to: 'index#create', as: 'post'
   get  '/:code', to: 'index#goto', as: 'goto'
   # The priority is based upon order of creation: first created -> highest priority.
