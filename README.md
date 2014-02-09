@@ -9,4 +9,4 @@ or
 
 ## Copyright / License
 * Copyright (c) 2013 jiunjiun (quietmes At gmail.com)
-* Licensed under [Apache](http://www.apache.org/licenses/) licenses.
+* Licensed under [MIT](http://opensource.org/licenses/MIT) licenses.
