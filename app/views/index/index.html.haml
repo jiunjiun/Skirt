@@ -8,6 +8,8 @@
       .col-md-8.col-md-offset-2
         .form-group
           = f.text_field :url, :type=> 'url', :class=> 'form-control col-md-8 surl', :placeholder=> 'http://your.url.here'
-          .back-fa.hide
+          #option.back-fa
+            %i.fa.fa-chevron-circle-down.fa-3x
+          #clear.back-fa.hide
             %i.fa.fa-undo.fa-3x
 
