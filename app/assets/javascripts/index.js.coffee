@@ -5,11 +5,28 @@
 $ ->
   $(document).on 'ajax:success', 'form#respond', (e, data, status, xhr) ->
     $('#url_url').val(data.surl).addClass('surl').select();
-    $('.back-fa').removeClass('hide');
+    clear('show')
 
-  $('#url_url.surl').click ->
-    $(this).select();
+  $('#url_url.surl').keydown ->
+    if event.keyCode == 13
+      $(this).select();
 
-  $('.back-fa').click ->
-    $('#url_url').val('').removeClass('surl');
-    $('.back-fa').addClass('hide');
+  $('#url_url.surl').keyup ->
+    if $(this).val().length == 0
+      clear('hide')
+
+  $('#option').click ->
+
+
+  $('#clear').click ->
+    clear('hide')
+
+  clear = (status) ->
+    if status == 'hide'
+      $('#url_url').val('').removeClass('surl');
+      $('#clear').addClass('hide');
+      $('#option').removeClass('hide');
+    else if status == 'show'
+      $('#clear').removeClass('hide');
+      $('#option').addClass('hide');
+      $('#url_url').addClass('surl')
