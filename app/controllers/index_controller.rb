@@ -4,22 +4,18 @@ class IndexController < ApplicationController
   end
 
   def goto
-    redirect_to Url.verifyCode(params[:code])
+    target_url = Url.verify_code(params[:code]) || root_path
+    redirect_to target_url
   end
 
   def create
-    @url = Url.new(url_params)
+    @url = Url.where({ url: url_params[:url] }).first_or_initialize
+    @url.assign_attributes(url_params)
+    @url.save
 
-    if Url.where(:url=> @url.url).count > 0
-      @render_url = root_url + Url.where(:url=> @url.url).first.code
-    elsif @url.save
-      @render_url = root_url + @url.code
-    else
-      @render_url = @url.url
-    end
-
+    render_url = "#{root_url}#{@url.code}"
     respond_to do |format|
-      format.json { render :json => {:surl => @render_url }}
+      format.json { render json: {surl: render_url }}
     end
   end
 
