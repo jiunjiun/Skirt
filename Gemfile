@@ -40,8 +40,6 @@ group :production do
   gem "pg"
 end
 
-
-
 gem 'haml'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
